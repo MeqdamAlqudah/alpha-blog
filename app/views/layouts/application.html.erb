@@ -8,9 +8,24 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application" %>
   </head>
 
   <body>
+  <noscript>YOU DON'T HAVE JAVASCRIPT AND THAT OFFENDS ME</noscript>
+
+
+  <%= link_to "Back", :back %>
+  <%# <%= button_to '<-- Go to user index', user_articles_path	, method:"get" %>
+
+       <%# <p class="notice"><%= notice></p>
+       <%# <p class="alert"><%= alert ></p>%>
+       <%flash.each do |name,msg|%>
+       <%= name%>
+       :
+       <%= msg%>
+       <%end%>
+
     <%= yield %>
   </body>
 </html>

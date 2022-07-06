@@ -1,0 +1,11 @@
+
+
+<h1>Showing article details</h1>
+<p><strong>Title: <%= @article.title%></strong></p>
+<p><strong>Description: <%= @article.description%></strong></p>
+
+<%= button_to 'Edit',edit_user_article_path(user_id:1,id:@article.id),method:'get'%>
+<br/>
+<%= button_to 'Delete',user_article_path(id:@article.id),method: "delete" ,form:{data:{confirm:"Are you sure? ", disable_with: 'loading...'}}%>
+<br/>
+<%= button_to 'Return to article list',user_articles_path ,method:'get' %>

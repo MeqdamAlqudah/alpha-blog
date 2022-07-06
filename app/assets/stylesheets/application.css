@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+* {
+  font-family: sans-serif;
+}
+
+/* .table-item {
+  text-align: left;
+  width: 16rem;
+} */
+
+/* input {
+  margin-left: 5rem;
+}
+textarea {
+  margin-left: 2rem;
+} */
