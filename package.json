@@ -1,0 +1,28 @@
+{
+  "name": "pacakge.json",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the\r application up and running.",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeqdamAlqudah/alpha-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeqdamAlqudah/alpha-blog/issues"
+  },
+  "homepage": "https://github.com/MeqdamAlqudah/alpha-blog#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1"
+  }
+}
