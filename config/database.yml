@@ -5,20 +5,21 @@ default: &default
 
 development:
   <<: *default
-  username: "meqdam"
-  password: "password1"
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>
   host: localhost
-  database: app_development
+  database: alpha_blog_development
 
 test:
   <<: *default
-  username: "meqdam"
-  password: "password1"
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>
   host: localhost
-  database: app_test
+  database: alpha_blog_test
 
 production:
   <<: *default
-  database: app_production
-  username: app
-  password: <%= ENV["APP_DATABASE_PASSWORD"] %>
+  database: alpha_blog_production
+  username: alpha_blog
+  password: <%= ENV["ALPHA_BLOG_DATABASE_PASSWORD"] %>
+
