@@ -1,11 +1,25 @@
+<h2 class="text-center mt-4"><%= @article.title %></h2>
 
-
-<h1>Showing article details</h1>
-<p><strong>Title: <%= @article.title%></strong></p>
-<p><strong>Description: <%= @article.description%></strong></p>
-
-<%= button_to 'Edit',edit_user_article_path(user_id:1,id:@article.id),method:'get'%>
-<br/>
-<%= button_to 'Delete',user_article_path(id:@article.id),method: "delete" ,form:{data:{confirm:"Are you sure? ", disable_with: 'loading...'}}%>
-<br/>
-<%= button_to 'Return to article list',user_articles_path ,method:'get' %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-4">
+      <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header font-italic">
+          by <%= @article.user.username if @article.user %>
+          <% if @article.categories.any? %>
+            <div class="mt-2"><%= render @article.categories %></div>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+          <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
+          <%= link_to "Delete", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(@article.created_at) %> ago,
+          edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

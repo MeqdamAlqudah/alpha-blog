@@ -1,48 +1,44 @@
 class ArticlesController < ApplicationController
-  helper_method :current_user
-  before_action :set_article, only: %i[show update destroy edit]
-  before_action :article_params, only: %i[create update]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
+  def show
+  end
+
   def index
-    @articles = Article.all
-    @user = current_user
+    @articles = Article.paginate(page: params[:page], per_page: 5)
   end
 
   def new
     @article = Article.new
   end
 
-  def show; end
+  def edit
+  end
 
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
     if @article.save
-      flash[:notice] = 'Article was created successfully.'
-      redirect_to user_article_path(user_id: params[:user_id], id: @article.id)
+      flash[:notice] = "Article was created successfully."
+      redirect_to @article
     else
-      # redirect_to new_user_article_path(user_id: params[:user_id])
-      # render html: { 'errors' => @article.errors.full_messages }
-      render :new, status: :unprocessable_entity end
+      render 'new'
+    end
   end
 
   def update
     if @article.update(article_params)
-      flash[:notice] = 'Article was updated successfully.'
-      redirect_to user_article_path(user_id: params[:user_id], id: @article.id)
+      flash[:notice] = "Article was updated successfully."
+      redirect_to @article
     else
-      render :edit, status: :unprocessable_entity
+      render 'edit'
     end
   end
 
   def destroy
-    if @article.destroy
-      flash[:notice] = 'Article was deleted successfully.'
-      redirect_to user_articles_path
-    else
-      render :index, status: :unprocessable_entity
-    end
+    @article.destroy
+    redirect_to articles_path
   end
-
-  def edit; end
 
   private
 
@@ -51,6 +47,8 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
+
+
 end

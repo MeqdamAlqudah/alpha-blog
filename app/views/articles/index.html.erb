@@ -1,33 +1,9 @@
-<h1 class = "title-article">Articles</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan = "3">Actions</th>
-    </tr>
-  </thead>
+<h1 class="text-center mt-4">Listing all articles</h1>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= button_to 'Delete',user_article_path(id:article.id),method:"delete"%></td>
-        <td><%= button_to 'Edit',edit_user_article_path(id:article.id),method:"get"%></td>
-        <%if current_user.present?%>
-       <td><%= button_to 'Show',user_article_path(user_id:@user.id,id: article.id),method:"get"%></td>
-        <%else%>
-          <td><%= button_to 'Show',user_article_path(user_id:1,id: article.id),method:"get"%></td>
-
-        <%end%>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<p>
-<%= button_to 'Create new', new_user_article_path		, method:"get" %>
-</p>
-<p>
-<%= button_to 'Sign out', destroy_user_session_path	, method:"delete" ,data:{confirm:"Are you sure? "}%>
-</p>
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+<%= render 'article' %>
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @articles, :container => false %>
+</div>

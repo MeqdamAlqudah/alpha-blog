@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AlphaBlog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-  <noscript>YOU DON'T HAVE JAVASCRIPT AND THAT OFFENDS ME</noscript>
-
-
-  <%= link_to "Back", :back %>
-  <%# <%= button_to '<-- Go to user index', user_articles_path	, method:"get" %>
-
-       <%# <p class="notice"><%= notice></p>
-       <%# <p class="alert"><%= alert ></p>%>
-       <%flash.each do |name,msg|%>
-       <%= name%>
-       :
-       <%= msg%>
-       <%end%>
-
-    <%= yield %>
+  <body class="d-flex flex-column">
+    <%= render 'layouts/navigation' %>
+    <div id="page-content">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
