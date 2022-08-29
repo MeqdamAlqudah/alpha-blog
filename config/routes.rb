@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :articles
   resources :users
   resources :categories
+  get 'signup',to: 'users#new'
 end
