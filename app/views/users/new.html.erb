@@ -1,26 +1,2 @@
-<%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local: true,url: users_path) do |f| %>
-    <div class="form-group row">
-    <%= f.label :username, class: "col-2 col-form-label text-light" %>
-    <div class="col-10">
-      <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "username" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :description, class: "col-2 col-form-label text-light" %>
-    <div class="col-10"> 
-      <%= f.text_field :email, rows: 10, class: "form-control shadow rounded", placeholder: "email" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :password , class: "col-2 col-form-label text-light" %>
-    <div class="col-10"> 
-      <%= f.text_field :password,class: "form-control shadow rounded",placeholder:"password"%>
-    </div>
-  </div>
-
-  <div class="form-group row justify-content-center">
-    <%= f.submit class: "btn btn-outline-light btn-lg" %>
-  </div>
-<%end%>
+<h1 class = "text-center mt-4" >Sign up for Alpha Blog</h1>
+<%= render 'form'%>
