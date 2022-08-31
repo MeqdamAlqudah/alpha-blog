@@ -1,18 +1,21 @@
 class UsersController < ApplicationController
     def new 
         
-        @user = User.create(username:params[:username],email:params[:email],password_digest:params[:password])
+        @user = User.new
         
     end
     def create 
-        @user = User.create(username:params[:user]["username"],email:params[:user]["email"],password_digest:params[:user]["password"])
+        @user = User.create(user_params)
 
 
         if(@user.save)
-            flash[:notice] = "User signUp  successfully."
+            flash[:notice] = "Welcome to alpha blog #{@user.username}, you have signUp  successfully."
             redirect_to articles_path
         else    
             render :new
         end
+    end
+    def user_params 
+        params.require(:user).permit(:username,:email,:password)
     end
 end
