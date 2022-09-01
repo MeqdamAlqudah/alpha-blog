@@ -1,0 +1,28 @@
+<h1 class ="text-center">Alpha Bloggers</h1>
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic bg-light border-0 ">
+         <%= link_to user.username, user_path(user.id) ,class:"text-decoration-none" %>
+          </div>
+          <div class="card-body ">
+           <%=gravatar_for(user) %>
+           <p class = "m-1"><%= count_articles(user.id)%>  articles</p>
+          </div>
+          <div class="container text-center w-50">
+                <div class="row justify-content-center">
+                  <%= link_to "View profile", user_path(user.id),class:"col border border-success m-2 rounded text-decoration-none p-2" %>
+                  <%= link_to "Edit profile", edit_user_path(user.id ) ,class:"col border border-info m-2 rounded text-decoration-none p-2" %>
+
+                </div>
+              </div>
+          <div class="card-footer text-muted border-0">
+            <small>Joined <%= joined_since(user) %> ago </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
