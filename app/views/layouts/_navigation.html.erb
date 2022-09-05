@@ -12,8 +12,14 @@
           <%= link_to "Articles",articles_path,class:"nav-link" ,id:"navbarDropdown"%>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-
+        <a class = "dropdown-item" href = "#">
+          <%= link_to "Create new",new_article_path%>
+        </a>
+        <a class = "dropdown-item" href = "#">
+          <%= link_to "All acrticles",articles_path%>
+        </a>
+        </div>
+      </li>
 
       </ul>
     <form class="form-inline my-2 my-lg-0">

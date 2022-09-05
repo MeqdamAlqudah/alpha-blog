@@ -1,0 +1,8 @@
+<h1>Log in</h1>
+<%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+    <%= f.label :email, "email"%>
+    <%= f.text_field :email,placeholder:"email"%>
+    <%= f.label :password,"password"%>
+    <%= f.text_field :password,placeholder:"password"%>
+    <%= f.submit "Login",class: "btn btn-outline-light btn-lg" %>
+<%end%>
