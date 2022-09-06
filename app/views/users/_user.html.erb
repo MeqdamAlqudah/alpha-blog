@@ -12,8 +12,11 @@
           
           <p> <%= pluralize(user.articles.count,"article")%></p>
           <div class = "d-flex justify-content-center">
+          
           <%=link_to "View profile",user_path(user),class:"text-decoration-none  btn btn-success bg-light text-dark m-1"%>
+            <%if current_user == user%>
           <%= link_to "Edit profile",edit_user_path(user),class:"text-decoration-none  btn btn-info bg-light m-1"%>
+          <%end%> 
           </div>
           </div>
           <div class="card-footer text-muted border-0">

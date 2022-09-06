@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show eidt update]
+  before_action :set_user, only: %i[show eidt update destroy]
+  before_action :require_same_user, only: %i[edit update destroy]
   def index
     @users = User.all
   end
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @articles = Article.where(user_id: params[:id])
+    @articles = Article.where(user_id: params[:id]) if current_user.id == @user.id
   end
 
   def create
@@ -35,6 +36,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    articles = Article.where(user_id: @user.id)
+    articles.each do |article|
+      article.destroy
+    end
+    session[:user_id] = nil
+    @user.destroy
+    flash[:notice] = 'User was deleted sucssesfully!!'
+    redirect_to articles_path
+  end
+
   private
 
   def user_params
@@ -43,5 +55,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    unless current_user == @user
+      flash[:alert] = 'You can only edit your account!!'
+      redirect_to @user
+    end
   end
 end

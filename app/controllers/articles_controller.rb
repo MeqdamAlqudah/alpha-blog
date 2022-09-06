@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
-
+  before_action :require_user, except: %i[index show]
   def show; end
 
   def index
@@ -19,22 +19,18 @@ class ArticlesController < ApplicationController
     if @article.save
       flash[:notice] = 'Article was created successfully.'
       redirect_to article_path(@article.id)
-    else
-      render 'new'
     end
   end
 
   def update
-    if @article.update(article_params)
+    if @article.user == current_user && @article.update(article_params)
       flash[:notice] = 'Article was updated successfully.'
       redirect_to @article
-    else
-      render 'edit'
     end
   end
 
   def destroy
-    @article.destroy
+    @article.destroy if @article.user == current_user
     redirect_to articles_path
   end
 
