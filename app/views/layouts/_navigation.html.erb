@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <%= link_to "ALPHA BLOG", root_path, class: "navbar-brand", id: "logo" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,46 +10,49 @@
         <%= link_to "Bloggers",users_path,class:"nav-link"	%>
       </li>
       
-    <%if logged_in? %>
-       <li class="nav-item dropdown d-flex w-25">
-          <a class="nav-link dropdown-toggle w-75" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+   
+      <li class="nav-item dropdown w-25 d-flex">
 
-        <%= "(Admin)" if current_user.admin?%><%= link_to "#{current_user.username}",user_path(current_user),class:"nav-link nav-item active w-75 ms-2"	%>
+    
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+        <%=link_to "Articles",articles_path,class:"nav-link nav-item active w-75 ms-2"	%>
          </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+           <%if logged_in?%>
+            <li><a class="dropdown-item" href="#">
+              <%= link_to "Create new",new_article_path ,class:"dropdown-item"%></a></li>
+              <%end%>
+            <li><a class="dropdown-item" href="#"><%= link_to "All acrticles",articles_path,class:"dropdown-item"%></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <%end%>
-      <li class="nav-item dropdown w-25 d-flex">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= link_to "Articles",articles_path,class:"nav-link" ,id:"navbarDropdown"%>
-        </a>
-
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%if logged_in?%>
-            <li>
-              <%= link_to "Create new",new_article_path ,class:"dropdown-item"%>
-            </li>
-            <%end%>
-            <li>          
-                <%= link_to "All acrticles",articles_path,class:"dropdown-item"%>
           </ul>
       </li>
       <li class="nav-item active w-25">
-        <%if logged_in?  %>
-          <%= button_to "Logout"  ,logout_path,class:"nav-link bg-transparent border-0",   method: :delete%>
-        <%else%>
-          <%= link_to "login",login_path,class:"nav-link",method:"get"%>
+        <%if !logged_in?  %>
+          <%= link_to "login",login_path,class:"ms-5 nav-link",method:"get"%>
           <%end%>
       </li>
       </ul>
+
     <form class="form-inline my-2 my-lg-0 d-flex">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+     <%if logged_in? %>
+        <div class="dropdown d-flex">
+  <a class="btn btn-secondary dropdown-toggle bg-transparent border-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <%= link_to "#{"(Admin)" if current_user.admin?} #{current_user.username}",user_path(current_user),class:"nav-link nav-item active w-100  p-0"	%>
+
+  </a>
+
+  <ul class="dropdown-menu">
+    <li>
+    <%= link_to "Profile" ,user_path(current_user) ,class:"dropdown-item text-dark text-decoration-none"%>
+   </li>
+    <li>          <%= button_to "Logout"  ,logout_path,class:"dropdown-item  bg-transparent border-0",   method: :delete%>
+</li>
+  </ul>
+</div>
+        <%end%>
   </div>
 </nav>
