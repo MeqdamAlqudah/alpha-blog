@@ -16,6 +16,11 @@
           <%=link_to "View profile",user_path(user),class:"text-decoration-none  btn btn-success bg-light text-dark m-1"%>
             <%if current_user == user%>
           <%= link_to "Edit profile",edit_user_path(user),class:"text-decoration-none  btn btn-info bg-light m-1"%>
+          <%elsif current_user.admin?%>
+           
+          <div class="d-flex justify-content-center">
+             <%= button_to "Delete user",user_path(user),method: :delete ,class: "btn btn-outline-danger bg-light m-1"%> 
+         </div>
           <%end%> 
           </div>
           </div>

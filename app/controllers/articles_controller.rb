@@ -23,14 +23,14 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.user == current_user && @article.update(article_params)
+    if (@article.user == current_user || current_user.admin?) && @article.update(article_params)
       flash[:notice] = 'Article was updated successfully.'
       redirect_to @article
     end
   end
 
   def destroy
-    @article.destroy if @article.user == current_user
+    @article.destroy if @article.user == current_user || current_user.admin?
     redirect_to articles_path
   end
 

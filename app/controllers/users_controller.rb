@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @articles = Article.where(user_id: params[:id]) if current_user.id == @user.id
+    @articles = Article.where(user_id: params[:id])
   end
 
   def create
@@ -37,13 +37,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    articles = Article.where(user_id: @user.id)
-    articles.each do |article|
-      article.destroy
-    end
-    session[:user_id] = nil
+    session[:user_id] = nil unless current_user.admin?
     @user.destroy
-    flash[:notice] = 'User was deleted sucssesfully!!'
+    flash[:notice] = 'Account and all associated articles  successfully deleted!!'
     redirect_to articles_path
   end
 
@@ -58,8 +54,8 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    unless current_user == @user
-      flash[:alert] = 'You can only edit your account!!'
+    if !(current_user == @user) && !current_user.admin?
+      flash[:alert] = 'You can only edit or delete your own account!!'
       redirect_to @user
     end
   end

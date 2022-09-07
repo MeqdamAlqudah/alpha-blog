@@ -14,12 +14,13 @@
           <div class="card-body">
             <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
             <p class="card-text"><%= truncate(article.description, length: 100) %></p>
-            
-            <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
-              <% if logged_in?  && article.user === current_user%>
-              <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
-              <%= link_to "Delete", article_path(article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            <div class = "d-flex justify-content-center">
+            <%= link_to "View", article_path(article), class: "btn btn-outline-success m-1" %>
+              <% if logged_in?  && (article.user === current_user || current_user.admin?)%>
+              <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info m-1" %>
+              <%= button_to "Delete", article_path(article), class: "btn btn-outline-danger bg-light m-1", method: :delete, data: {confirm: "Are you sure?"} %>
             <%end%>
+            </div>
           </div>
           <div class="card-footer text-muted">
             <small>Created <%= time_ago_in_words(article.created_at) %> ago,
