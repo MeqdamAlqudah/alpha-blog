@@ -17,5 +17,5 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
-import "bootstrap"
+// import "bootstrap"
 import "../stylesheets/application"
