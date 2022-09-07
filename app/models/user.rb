@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   before_save { self.email = email.downcase }
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   validates :email,
             uniqueness: { case_sensitive: false },
