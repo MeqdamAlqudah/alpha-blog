@@ -4,27 +4,38 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-      <li class="nav-item dropdown">
+  <div class="collapse navbar-collapse w-75" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto w-50 align-items-center">
+      <li class="nav-item active w-25">
+        <%= link_to "Bloggers",users_path,class:"nav-link"	%>
+      </li>
+      <li class="nav-item dropdown w-25 d-flex">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= link_to "Articles",articles_path,class:"nav-link" ,id:"navbarDropdown"%>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class = "dropdown-item" href = "#">
-          <%= link_to "Create new",new_article_path%>
-        </a>
-        <a class = "dropdown-item" href = "#">
-          <%= link_to "All acrticles",articles_path%>
-        </a>
-        </div>
-      </li>
 
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <%= link_to "Create new",new_article_path ,class:"dropdown-item"%>
+            </li>
+            <li>          
+                <%= link_to "All acrticles",articles_path,class:"dropdown-item"%>
+          </ul>
+      </li>
+      <li class="nav-item active w-25">
+        <%if logged_in?  %>
+          <%= button_to "Logout"  ,logout_path,class:"nav-link bg-transparent border-0",   method: :delete%>
+        <%else%>
+          <%= link_to "login",login_path,class:"nav-link",method:"get"%>
+          <%end%>
+      </li>
       </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0 d-flex">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <%if logged_in? %>
+        <%= link_to "#{current_user.username}",user_path(current_user),class:"nav-link nav-item active w-25 ms-2"	%>
+    <%end%>
   </div>
 </nav>
