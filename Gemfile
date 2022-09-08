@@ -72,5 +72,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
 gem "ruby-lsp", "~> 0.3.1", :group => :development
+gem "minitest-rails", "~> 7.0.0"
