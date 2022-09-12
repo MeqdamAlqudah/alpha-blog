@@ -1,24 +1,72 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## Preview
 
-* System dependencies
+![App-preview](./Screenshot%20from%202022-09-12%2019-37-51.png)
+(Front-end)
 
-* Configuration
+## Live version
 
-* Database creation
+[Live demo](https://alpha-blog-meqdam.herokuapp.com/)
 
-* Database initialization
+## Built With
+- Ruby on Rails
 
-* How to run the test suite
+## Getting Started
+- Follow setup instructions below
 
-* Services (job queues, cache servers, search engines, etc.)
+### Prerequisites
 
-* Deployment instructions
+- Ruby
+- Git and Github
+- Terminal
+- Browser
 
-* ...
+### Setup
+
+Follow [this link](https://github.com/MeqdamAlqudah/Book-mechanic-front-end) to visit the [back-end repository](https://github.com/MeqdamAlqudah/Book-mechanic) and start the server on localhost:3000.
+
+- Clone this repository `https://github.com/MeqdamAlqudah/Book-mechanic.git`
+- Cd or navigate into the directory and run `bundle install` to install dependencies
+- Run `rails db:create`
+- Run `rails db:migrate`
+- Run `rails db:seed`
+- Run `rails start` to start the server
+
+This is an API only app. Use the [Front-end repository](https://github.com/MeqdamAlqudah/Book-mechanic-front-end.git) for an user interface.
+
+Suggestions:
+Back-end should run in **localhost:3000**
+Front-end should run in **localhost:3001**
+
+# Credits
+
+## Authors
+
+
+ **Meqdam Al-qudah**
+
+- [GitHub](https://github.com/MeqdamAlqudah)
+- [Twitter](https://twitter.com/MeqdamQudah)
+- [LinkedIn](www.linkedin.com/in/meqdam-al-qudah-7514a21b5)
+
+  
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- [Mashrur Hossain](https://www.mashrurhossain.com/)
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
