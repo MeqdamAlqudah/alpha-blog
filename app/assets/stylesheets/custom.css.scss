@@ -33,6 +33,11 @@ body {
   height: 100%;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 #page-content {
   flex: 1 0 auto;
   background-color: lightgrey;
@@ -75,3 +80,8 @@ body {
     margin-right: 1em; }
   .flickr_pagination .next_page {
     margin-left: 1em; }
+
+
+.categoryInput {
+  align-self: center;
+}

@@ -184,7 +184,7 @@ GEM
     reline (0.3.1)
       io-console (~> 0.5)
     rexml (3.2.5)
-    ruby-lsp (0.3.1)
+    ruby-lsp (0.3.2)
       language_server-protocol (~> 3.17.0)
       sorbet-runtime
       syntax_tree (>= 3.4)
@@ -202,7 +202,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sorbet-runtime (0.5.10404)
+    sorbet-runtime (0.5.10413)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)

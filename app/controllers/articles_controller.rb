@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
   before_action :require_user, except: %i[index show]
-  def show; end
+  def show
+    @categories = Article.find(params[:id]).categories
+  end
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5)
@@ -41,6 +45,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description,category_ids:[])
   end
 end
