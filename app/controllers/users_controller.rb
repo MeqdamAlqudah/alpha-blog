@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show eidt update destroy]
+  before_action :set_user, only: %i[show edit update destroy]
   before_action :require_same_user, only: %i[edit update destroy]
   def index
     @users = User.all
@@ -27,7 +27,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @user.update(user_params)
